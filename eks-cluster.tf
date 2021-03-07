@@ -5,9 +5,10 @@ module "eks" {
   subnets         = module.vpc.private_subnets
 
   tags = {
-    Environment = "training"
-    GithubRepo  = "terraform-aws-eks"
-    GithubOrg   = "terraform-aws-modules"
+    Owner = "jonico"
+    Purpose  = "actions-runner-controller"
+    Terminate   = "Never"
+    Stop = "Never"
   }
 
   vpc_id = module.vpc.vpc_id
