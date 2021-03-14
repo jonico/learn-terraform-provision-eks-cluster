@@ -1,0 +1,120 @@
+apiVersion: v1
+items:
+- apiVersion: actions.summerwind.dev/v1alpha1
+  kind: RunnerDeployment
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"actions.summerwind.dev/v1alpha1","kind":"RunnerDeployment","metadata":{"annotations":{},"labels":{"environment":"octodemo"},"name":"actions-runner-deployment-octodemo","namespace":"github-actions-runner-octodemo"},"spec":{"template":{"spec":{"dockerEnabled":false,"group":"default","image":"jonico/actions-runner:latest","labels":["octodemo","kubernetes"],"organization":"octodemo","resources":{"limits":{"cpu":"1000m","memory":"1Gi"},"requests":{"cpu":"50m","memory":"128Mi"}},"tolerations":[{"effect":"NoExecute","key":"node.kubernetes.io/unreachable","operator":"Exists","tolerationSeconds":10}],"volumeMounts":[{"mountPath":"/runner","name":"runner"}],"volumes":[{"emptyDir":{},"name":"runner"}]}}}}
+    creationTimestamp: "2021-03-08T18:45:47Z"
+    generation: 14
+    labels:
+      environment: octodemo
+    managedFields:
+    - apiVersion: actions.summerwind.dev/v1alpha1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:labels:
+            .: {}
+            f:environment: {}
+        f:spec:
+          .: {}
+          f:template:
+            .: {}
+            f:spec:
+              .: {}
+              f:dockerEnabled: {}
+              f:group: {}
+              f:image: {}
+              f:labels: {}
+              f:organization: {}
+              f:resources:
+                .: {}
+                f:limits:
+                  .: {}
+                  f:cpu: {}
+                  f:memory: {}
+                f:requests: {}
+              f:tolerations: {}
+      manager: kubectl
+      operation: Update
+      time: "2021-03-12T12:23:33Z"
+    - apiVersion: actions.summerwind.dev/v1alpha1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:replicas: {}
+      manager: manager
+      operation: Update
+      time: "2021-03-12T12:30:23Z"
+    - apiVersion: actions.summerwind.dev/v1alpha1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:template:
+            f:spec:
+              f:resources:
+                f:requests:
+                  f:cpu: {}
+                  f:memory: {}
+              f:securityContext:
+                .: {}
+                f:fsGroup: {}
+              f:volumeMounts: {}
+              f:volumes: {}
+      manager: kubectl-edit
+      operation: Update
+      time: "2021-03-14T01:10:32Z"
+    name: actions-runner-deployment-octodemo
+    namespace: github-actions-runner-octodemo
+    resourceVersion: "2039946"
+    selfLink: /apis/actions.summerwind.dev/v1alpha1/namespaces/github-actions-runner-octodemo/runnerdeployments/actions-runner-deployment-octodemo
+    uid: 8fc3f7ef-233b-4e49-96cc-bf780da0ae80
+  spec:
+    replicas: 5
+    selector: null
+    template:
+      metadata:
+        creationTimestamp: null
+      spec:
+        dockerEnabled: false
+        dockerdContainerResources: {}
+        group: default
+        image: jonico/actions-runner:latest
+        labels:
+        - octodemo
+        - kubernetes
+        organization: octodemo
+        resources:
+          limits:
+            cpu: "1"
+            memory: 1Gi
+          requests:
+            cpu: 150m
+            memory: 150Mi
+        securityContext:
+          fsGroup: 1000
+        tolerations:
+        - effect: NoExecute
+          key: node.kubernetes.io/unreachable
+          operator: Exists
+          tolerationSeconds: 10
+        volumeMounts:
+        - mountPath: /runner
+          name: runner
+        - mountPath: /cache
+          name: cache
+        volumes:
+        - emptyDir: {}
+          name: runner
+        - name: cache
+          persistentVolumeClaim:
+            claimName: cache-pvc
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
